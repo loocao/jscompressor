@@ -32,7 +32,7 @@
          <action
                class="me.oncereply.jscompressor.popup.actions.CSSCompressorAction"
                id="me.oncereply.jscompressor.CompressorActionDelegate"
-               label="Compress Javascript">
+               label="Compress CSS">
          </action>
       </objectContribution>
    </extension>

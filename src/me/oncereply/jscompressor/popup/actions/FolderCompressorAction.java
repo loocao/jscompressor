@@ -4,6 +4,7 @@ import java.io.File;
 import java.lang.reflect.Method;
 
 import me.oncereply.jscompressor.Activator;
+import me.oncereply.jscompressor.util.ConsoleUtils;
 import me.oncereply.jscompressor.util.FileUtils;
 import me.oncereply.jscompressor.util.LogUtils;
 
@@ -79,7 +80,9 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 				return;
 			}
 			// 如果是javascript文件
-			if (file.getFileExtension().equals("js")) {
+			if (file.getFileExtension().equals("js")
+					|| file.getFileExtension().equals("css")) {
+				ConsoleUtils.info("Compress successed: " + fullOutPath);
 				try {
 					ClassLoader loader = Activator.getDefault().getClass()
 							.getClassLoader();
@@ -92,12 +95,9 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 							file.getLocation().toFile().getAbsolutePath(),
 							"-o", fullOutPath };
 					main.invoke(null, new Object[] { args });
-
 				} catch (Exception e) {
-					e.printStackTrace();
+					ConsoleUtils.error("Compress failed: " + fullOutPath, e);
 				}
-			} else if (file.getFileExtension().equals("css")) {// 如果是css文件
-
 			}
 		}
 	}
