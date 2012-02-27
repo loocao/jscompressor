@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="me.oncereply.jscompressor.feature"
-      label="Feature"
-      version="1.0.0.qualifier">
+      label="JavaScript Compressor Feature"
+      version="1.0.0.qualifier"
+      plugin="me.oncereply.jscompressor">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -12,15 +13,19 @@
       [Enter Copyright Description here.]
    </copyright>
 
-   <license url="http://www.example.com/license">
+   <license url="http://www.apache.org/licenses/LICENSE-2.0">
       [Enter License Description here.]
    </license>
+
+   <url>
+      <update label="jscompressor" url="https://raw.github.com/oncereply/jscompressor/master/update/"/>
+   </url>
 
    <plugin
          id="me.oncereply.jscompressor"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="1.0.0.qualifier"
          unpack="false"/>
 
 </feature>
