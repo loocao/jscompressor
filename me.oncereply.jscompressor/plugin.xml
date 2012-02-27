@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="me.oncereply.jscompressor.FolderContribution"
+            objectClass="org.eclipse.core.resources.IFolder">
+         <action
+               class="me.oncereply.jscompressor.popup.actions.FolderCompressorAction"
+               enablesFor="1"
+               id="me.oncereply.jscompressor.CompressorActionDelegate"
+               label="Compress Javascript">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="me.oncereply.jscompressor.JavascriptFileContribution"
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.js">
+         <action
+               class="me.oncereply.jscompressor.popup.actions.JavascriptCompressorAction"
+               enablesFor="1"
+               id="me.oncereply.jscompressor.CompressorActionDelegate"
+               label="Compress Javascript">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="me.oncereply.jscompressor.CSSFileContribution"
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.css">
+         <action
+               class="me.oncereply.jscompressor.popup.actions.CSSCompressorAction"
+               id="me.oncereply.jscompressor.CompressorActionDelegate"
+               label="Compress CSS">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage"
+            class="me.oncereply.jscompressor.preferences.JavascriptCompressorPreferencePage"
+            id="me.oncereply.jscompressor.preferences.JavascriptCompressorPreferencePage"
+            name="Compressor">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="me.oncereply.jscompressor.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>
