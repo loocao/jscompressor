@@ -21,6 +21,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.P_CHOICE, "choice2");
 		store.setDefault(PreferenceConstants.P_STRING,
 				"Default value");
+		store.setDefault(PreferenceConstants.P_CHOICE_COMPRESSOR, "&YUI Compressor");
+		store.setDefault(PreferenceConstants.P_YUICOMPRESSOR_CHARSET_CHOICE, "GBK");
 	}
 
 }

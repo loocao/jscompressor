@@ -44,6 +44,12 @@
             id="me.oncereply.jscompressor.preferences.JavascriptCompressorPreferencePage"
             name="Compressor">
       </page>
+      <page
+            category="me.oncereply.jscompressor.preferences.JavascriptCompressorPreferencePage"
+            class="me.oncereply.jscompressor.preferences.YUICompressorPreferencePage"
+            id="me.oncereply.jscompressor.preferences.YUICompressor"
+            name="YUI Compressor">
+      </page>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
