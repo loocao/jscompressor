@@ -18,23 +18,23 @@ public class PreferenceConstants {
 	/**
 	 * yui:charset
 	 */
-	public static final String P_YUICOMPRESSOR_CHARSET_CHOICE = "yuicompressor_charset";
+	public static final String P_YUI_CHARSET_CHOICE = "yui_charset";
 
 	/**
 	 * YUI:--nomunge Minify only. Do not obfuscate local symbols.
 	 */
-	public static final String P_YUICOMPRESSOR_NOMUNGE_BOOLEAN = "yuicompressor_nomunge";
+	public static final String P_YUI_NOMUNGE_BOOLEAN = "yui_nomunge";
 
 	/**
 	 * YUI:--preserve-semi Preserve unnecessary semicolons (such as right before
 	 * a '}') This option is useful when compressed code has to be run through
 	 * JSLint (which is the case of YUI for example)
 	 */
-	public static final String P_YUICOMPRESSOR_PRESERVE_SEMI_BOOLEAN = "yuicompressor_preserve_semi";
+	public static final String P_YUI_PRESERVE_SEMI_BOOLEAN = "yui_preserve_semi";
 	
 	/**
 	 * YUI:--disable-optimizations Disable all the built-in micro optimizations.
 	 */
-	public static final String P_YUICOMPRESSOR_DISABLE_OPTIMIZATIONS="disable_optimizations";
+	public static final String P_YUI_DISABLE_OPTIMIZATIONS="yui_disable_optimizations";
 
 }

@@ -1,9 +1,10 @@
 package me.oncereply.jscompressor.popup.actions;
 
 import java.io.File;
-import java.lang.reflect.Method;
 
 import me.oncereply.jscompressor.Activator;
+import me.oncereply.jscompressor.core.CompressorFactory;
+import me.oncereply.jscompressor.core.ICompressor;
 import me.oncereply.jscompressor.preferences.PreferenceConstants;
 import me.oncereply.jscompressor.util.ConsoleUtils;
 import me.oncereply.jscompressor.util.FileUtils;
@@ -22,12 +23,12 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.internal.PluginAction;
 
-import com.yahoo.platform.yui.compressor.YUICompressor;
-
 @SuppressWarnings("restriction")
 public class FolderCompressorAction implements IObjectActionDelegate {
 
 	private Shell shell;
+	private String compressorType;
+	private ICompressor compressor;
 	/**
 	 * 导出文件夹
 	 */
@@ -42,6 +43,9 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 		DirectoryDialog d = new DirectoryDialog(shell);
 		outFolder = d.open();
 		if (outFolder != null) {
+			// 加载preferences配置
+			initPreferencesSetting();
+
 			if ((action instanceof PluginAction)) {
 				PluginAction opAction = (PluginAction) action;
 				ISelection selection = opAction.getSelection();
@@ -57,7 +61,6 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 		}
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void handleResource(IResource resource, String path) {
 		// 如果是文件夹
 		if ((resource instanceof IFolder)) {
@@ -70,40 +73,63 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 			} catch (CoreException e) {
 			}
 		} else if (resource instanceof IFile) {
-			String compressor = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_COMPRESSOR_CHOICE);
-			
-			
-//			IFile file = (IFile) resource;
-//			// 输出文件路径
-//			String fullOutPath = outFolder + path;
-//			File temp = new File(fullOutPath);
-//			if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
-//				// 如果是javascript文件
-//				if (file.getFileExtension().equals("js")
-//						|| file.getFileExtension().equals("css")) {
-//					ConsoleUtils.info("Compress successed: " + fullOutPath);
-//					try {
-//						ClassLoader loader = Activator.getDefault().getClass()
-//								.getClassLoader();
-//						shell.getDisplay().getSyncThread();
-//						Thread.currentThread().setContextClassLoader(loader);
-//						Class c = loader.loadClass(YUICompressor.class
-//								.getName());
-//						Method main = c.getMethod("main",
-//								new Class[] { String[].class });
-//						String args[] = new String[] {
-//								file.getLocation().toFile().getAbsolutePath(),
-//								"-o", fullOutPath };
-//						main.invoke(null, new Object[] { args });
-//					} catch (Exception e) {
-//						ConsoleUtils
-//								.error("Compress failed: " + fullOutPath, e);
-//					}
-//				}
-//			} else {
-//				// 创建文件不成功
-//				LogUtils.error("File "+temp.getAbsolutePath()+" compress failed.");
-//			}
+			// 输出文件路径
+			String fullOutPath = outFolder + path;
+			File temp = new File(fullOutPath);
+			if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
+				IFile file = (IFile) resource;
+				if (compressor != null) {
+					if (file.getFileExtension().equals("js")
+							|| file.getFileExtension().equals("css")) {
+						ConsoleUtils.info("Compress successed: " + fullOutPath);
+						String args[] = new String[] {
+								file.getLocation().toFile().getAbsolutePath(),
+								"-o", fullOutPath };
+						try {
+							compressor.compress(args);
+						} catch (Exception e) {
+							ConsoleUtils.error("Compress failed: "
+									+ fullOutPath, e);
+						}
+					}
+				}
+			} else {
+				// 创建文件不成功
+				LogUtils.error("File " + temp.getAbsolutePath()
+						+ " compress failed.");
+				return;
+			}
+			// IFile file = (IFile) resource;
+			// // 输出文件路径
+			// String fullOutPath = outFolder + path;
+			// File temp = new File(fullOutPath);
+			// if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
+			// // 如果是javascript文件
+			// if (file.getFileExtension().equals("js")
+			// || file.getFileExtension().equals("css")) {
+			// ConsoleUtils.info("Compress successed: " + fullOutPath);
+			// try {
+			// ClassLoader loader = Activator.getDefault().getClass()
+			// .getClassLoader();
+			// shell.getDisplay().getSyncThread();
+			// Thread.currentThread().setContextClassLoader(loader);
+			// Class c = loader.loadClass(YUICompressor.class
+			// .getName());
+			// Method main = c.getMethod("main",
+			// new Class[] { String[].class });
+			// String args[] = new String[] {
+			// file.getLocation().toFile().getAbsolutePath(),
+			// "-o", fullOutPath };
+			// main.invoke(null, new Object[] { args });
+			// } catch (Exception e) {
+			// ConsoleUtils
+			// .error("Compress failed: " + fullOutPath, e);
+			// }
+			// }
+			// } else {
+			// // 创建文件不成功
+			// LogUtils.error("File "+temp.getAbsolutePath()+" compress failed.");
+			// }
 		}
 	}
 
@@ -115,6 +141,13 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 	@Override
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		shell = targetPart.getSite().getShell();
+	}
+
+	private void initPreferencesSetting() {
+		compressorType = Activator.getDefault().getPreferenceStore()
+				.getString(PreferenceConstants.P_COMPRESSOR_CHOICE);
+		// 实例压缩对象
+		compressor = CompressorFactory.newCompressor(compressorType);
 	}
 
 }
