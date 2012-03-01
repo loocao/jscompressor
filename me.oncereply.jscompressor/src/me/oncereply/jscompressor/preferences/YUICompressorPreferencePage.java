@@ -25,12 +25,13 @@ public class YUICompressorPreferencePage extends FieldEditorPreferencePage
 						{"UTF-8","UTF-8"},
 						{"GBK","GBK"}
 				}, getFieldEditorParent()));
+		
 		addField(new BooleanFieldEditor(PreferenceConstants.P_YUICOMPRESSOR_NOMUNGE_BOOLEAN,
 				"&Minify only. Do not obfuscate local symbols.", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.P_YUICOMPRESSOR_PRESERVE_SEMI_BOOLEAN,
 				"&Preserve unnecessary semicolons (such as right before a '}')", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(PreferenceConstants.P_YUICOMPRESSOR_NOMUNGE_BOOLEAN,
-				"&Minify only. Do not obfuscate local symbols.", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(PreferenceConstants.P_YUICOMPRESSOR_DISABLE_OPTIMIZATIONS,
+				"&Disable all the built-in micro optimizations.", getFieldEditorParent()));
 	}
 
 	@Override

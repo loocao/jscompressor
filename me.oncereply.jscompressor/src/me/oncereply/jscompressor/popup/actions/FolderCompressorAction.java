@@ -4,6 +4,7 @@ import java.io.File;
 import java.lang.reflect.Method;
 
 import me.oncereply.jscompressor.Activator;
+import me.oncereply.jscompressor.preferences.PreferenceConstants;
 import me.oncereply.jscompressor.util.ConsoleUtils;
 import me.oncereply.jscompressor.util.FileUtils;
 import me.oncereply.jscompressor.util.LogUtils;
@@ -69,37 +70,40 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 			} catch (CoreException e) {
 			}
 		} else if (resource instanceof IFile) {
-			IFile file = (IFile) resource;
-			// 输出文件路径
-			String fullOutPath = outFolder + path;
-			File temp = new File(fullOutPath);
-			if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
-				// 如果是javascript文件
-				if (file.getFileExtension().equals("js")
-						|| file.getFileExtension().equals("css")) {
-					ConsoleUtils.info("Compress successed: " + fullOutPath);
-					try {
-						ClassLoader loader = Activator.getDefault().getClass()
-								.getClassLoader();
-						shell.getDisplay().getSyncThread();
-						Thread.currentThread().setContextClassLoader(loader);
-						Class c = loader.loadClass(YUICompressor.class
-								.getName());
-						Method main = c.getMethod("main",
-								new Class[] { String[].class });
-						String args[] = new String[] {
-								file.getLocation().toFile().getAbsolutePath(),
-								"-o", fullOutPath };
-						main.invoke(null, new Object[] { args });
-					} catch (Exception e) {
-						ConsoleUtils
-								.error("Compress failed: " + fullOutPath, e);
-					}
-				}
-			} else {
-				// 创建文件不成功
-				LogUtils.error("File "+temp.getAbsolutePath()+" compress failed.");
-			}
+			String compressor = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.P_COMPRESSOR_CHOICE);
+			
+			
+//			IFile file = (IFile) resource;
+//			// 输出文件路径
+//			String fullOutPath = outFolder + path;
+//			File temp = new File(fullOutPath);
+//			if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
+//				// 如果是javascript文件
+//				if (file.getFileExtension().equals("js")
+//						|| file.getFileExtension().equals("css")) {
+//					ConsoleUtils.info("Compress successed: " + fullOutPath);
+//					try {
+//						ClassLoader loader = Activator.getDefault().getClass()
+//								.getClassLoader();
+//						shell.getDisplay().getSyncThread();
+//						Thread.currentThread().setContextClassLoader(loader);
+//						Class c = loader.loadClass(YUICompressor.class
+//								.getName());
+//						Method main = c.getMethod("main",
+//								new Class[] { String[].class });
+//						String args[] = new String[] {
+//								file.getLocation().toFile().getAbsolutePath(),
+//								"-o", fullOutPath };
+//						main.invoke(null, new Object[] { args });
+//					} catch (Exception e) {
+//						ConsoleUtils
+//								.error("Compress failed: " + fullOutPath, e);
+//					}
+//				}
+//			} else {
+//				// 创建文件不成功
+//				LogUtils.error("File "+temp.getAbsolutePath()+" compress failed.");
+//			}
 		}
 	}
 

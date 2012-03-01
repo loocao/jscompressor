@@ -13,7 +13,7 @@ public class PreferenceConstants {
 
 	public static final String P_STRING = "stringPreference";
 
-	public static final String P_CHOICE_COMPRESSOR = "compressor";
+	public static final String P_COMPRESSOR_CHOICE = "compressor";
 
 	/**
 	 * yui:charset
@@ -31,5 +31,10 @@ public class PreferenceConstants {
 	 * JSLint (which is the case of YUI for example)
 	 */
 	public static final String P_YUICOMPRESSOR_PRESERVE_SEMI_BOOLEAN = "yuicompressor_preserve_semi";
+	
+	/**
+	 * YUI:--disable-optimizations Disable all the built-in micro optimizations.
+	 */
+	public static final String P_YUICOMPRESSOR_DISABLE_OPTIMIZATIONS="disable_optimizations";
 
 }
