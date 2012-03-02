@@ -81,12 +81,12 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 				if (compressor != null) {
 					if (file.getFileExtension().equals("js")
 							|| file.getFileExtension().equals("css")) {
-						ConsoleUtils.info("Compress successed: " + fullOutPath);
 						String args[] = new String[] {
 								file.getLocation().toFile().getAbsolutePath(),
 								"-o", fullOutPath };
 						try {
 							compressor.compress(args);
+							ConsoleUtils.info("Compress successed: " + fullOutPath);
 						} catch (Exception e) {
 							ConsoleUtils.error("Compress failed: "
 									+ fullOutPath, e);

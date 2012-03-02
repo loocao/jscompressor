@@ -31,7 +31,7 @@ public class JavascriptCompressorPreferencePage extends
 	 * editor knows how to save and restore itself.
 	 */
 	public void createFieldEditors() {
-
+		//选择压缩器
 		addField(new RadioGroupFieldEditor(
 				PreferenceConstants.P_COMPRESSOR_CHOICE,
 				"Select which one to compress JavaScript:",
@@ -41,19 +41,6 @@ public class JavascriptCompressorPreferencePage extends
 						{ "&Closure Compiler",
 								Activator.Compressor.ClosureCompiler } },
 				getFieldEditorParent()));
-
-		addField(new DirectoryFieldEditor(PreferenceConstants.P_PATH,
-				"&Directory preference:", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(PreferenceConstants.P_BOOLEAN,
-				"&An example of a boolean preference", getFieldEditorParent()));
-
-		addField(new RadioGroupFieldEditor(PreferenceConstants.P_CHOICE,
-				"An example of a multiple-choice preference", 1,
-				new String[][] { { "&Choice 1", "choice1" },
-						{ "C&hoice 2", "choice2" } }, getFieldEditorParent()));
-		addField(new StringFieldEditor(PreferenceConstants.P_STRING,
-				"A &text preference:", getFieldEditorParent()));
-
 	}
 
 	/*

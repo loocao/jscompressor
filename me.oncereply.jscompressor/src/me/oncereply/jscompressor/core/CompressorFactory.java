@@ -1,40 +1,45 @@
 package me.oncereply.jscompressor.core;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import me.oncereply.jscompressor.Activator;
 import me.oncereply.jscompressor.preferences.PreferenceConstants;
 
 public class CompressorFactory {
 
-	private static Map<String, ICompressor> compressorMap = new HashMap<String, ICompressor>();
-
 	public static ICompressor newCompressor(String compressor) {
-		ICompressor c = compressorMap.get(compressor);
-		if (c == null) {
-			if (compressor.equals(Activator.Compressor.YUICompressor)) {
-				// 加载 yui的preferences配置
-				String[] preferences = new String[] {
-						getStoreString(PreferenceConstants.P_YUI_CHARSET_CHOICE),
-						getStoreString(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN),
-						getStoreString(PreferenceConstants.P_YUI_PRESERVE_SEMI_BOOLEAN),
-						getStoreString(PreferenceConstants.P_YUI_DISABLE_OPTIMIZATIONS) };
-				c = new YUICompressor();
-				c.setPreferences(preferences);
-			} else if (compressor.equals(Activator.Compressor.ClosureCompiler)) {
-				// 加载 Closure-Compile的preferences配置
-				// TODO 加载 Closure-Compile的preferences配置
-				c = new ClosureCompilerCompressor();
+		ICompressor c = null;
+		if (compressor.equals(Activator.Compressor.YUICompressor)) {
+			c = new YUICompressor();
+			// 加载 yui的preferences配置
+			List<String> options = new ArrayList<String>();
+			options.add("--charset");
+			options.add(getStoreString(PreferenceConstants.P_YUI_CHARSET_CHOICE));
+			if (getStoreBealoon(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN)) {
+				options.add("--nomunge");
 			}
-			compressorMap.put(compressor, c);
+			if (getStoreBealoon(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN)) {
+				options.add("--preserve-semi");
+			}
+			if (getStoreBealoon(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN)) {
+				options.add("--disable-optimizations");
+			}
+			c.setOptions(options);
+		} else if (compressor.equals(Activator.Compressor.ClosureCompiler)) {
+			// 加载 Closure-Compile的preferences配置
+			// TODO 加载 Closure-Compile的preferences配置
+			c = new ClosureCompilerCompressor();
 		}
 		return c;
 	}
 
 	private static String getStoreString(String name) {
-		return Activator.getDefault().getPreferenceStore()
-				.getDefaultString(name);
+		return Activator.getDefault().getPreferenceStore().getString(name);
+	}
+
+	private static boolean getStoreBealoon(String name) {
+		return Activator.getDefault().getPreferenceStore().getBoolean(name);
 	}
 
 }
