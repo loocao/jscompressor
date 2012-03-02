@@ -16,10 +16,10 @@ import me.oncereply.jscompressor.Activator;
  * preferences can be accessed directly via the preference store.
  */
 
-public class JavascriptCompressorPreferencePage extends
+public class CompressorPreferencePage extends
 		FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-	public JavascriptCompressorPreferencePage() {
+	public CompressorPreferencePage() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		// setDescription("Compressor Settings");
@@ -31,16 +31,25 @@ public class JavascriptCompressorPreferencePage extends
 	 * editor knows how to save and restore itself.
 	 */
 	public void createFieldEditors() {
-		//选择压缩器
+		// 选择压缩器
 		addField(new RadioGroupFieldEditor(
-				PreferenceConstants.P_COMPRESSOR_CHOICE ,
+				PreferenceConstants.P_CHOICE_COMPRESSOR,
 				"Select which one to compress JavaScript:",
 				2,
 				new String[][] {
-					{ "&YUI Compressor", Activator.Compressor.YUICompressor },
-					{ "&Closure Compiler",Activator.Compressor.ClosureCompiler } 
-				},
+						{ "&YUI Compressor", Activator.Compressor.YUICompressor },
+						{ "&Closure Compiler",
+								Activator.Compressor.ClosureCompiler } },
 				getFieldEditorParent()));
+
+		// JavaScript压缩开关
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_BOOLEAN_JAVASCRIPT_SWITCH,
+				"Don't compress JavaScript files.", getFieldEditorParent()));
+		// CSS压缩开关
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_BOOLEAN_CSS_SWITCH,
+				"Don't compress CSS files.", getFieldEditorParent()));
 	}
 
 	/*

@@ -18,13 +18,15 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		store.setDefault(PreferenceConstants.P_BOOLEAN, true);
-		store.setDefault(PreferenceConstants.P_CHOICE, "choice2");
-		store.setDefault(PreferenceConstants.P_STRING, "Default value");
-		store.setDefault(PreferenceConstants.P_COMPRESSOR_CHOICE,
+		store.setDefault(PreferenceConstants.P_CHOICE_COMPRESSOR,
 				Activator.Compressor.YUICompressor);
-		store.setDefault(PreferenceConstants.P_YUI_CHARSET_CHOICE,
-				"GBK");
+		store.setDefault(PreferenceConstants.P_BOOLEAN_JAVASCRIPT_SWITCH, false);
+		store.setDefault(PreferenceConstants.P_BOOLEAN_CSS_SWITCH, false);
+		// yui
+		store.setDefault(PreferenceConstants.P_YUI_CHOICE_CHARSET, "UTF-8");
+		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_NOMUNGE, false);
+		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_PRESERVE_SEMI, false);
+		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS, false);
 	}
 
 }

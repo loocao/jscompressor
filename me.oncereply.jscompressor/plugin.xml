@@ -40,12 +40,12 @@
          point="org.eclipse.ui.preferencePages">
       <page
             category="org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage"
-            class="me.oncereply.jscompressor.preferences.JavascriptCompressorPreferencePage"
-            id="me.oncereply.jscompressor.preferences.JavascriptCompressorPreferencePage"
+            class="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
+            id="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
             name="Compressor">
       </page>
       <page
-            category="me.oncereply.jscompressor.preferences.JavascriptCompressorPreferencePage"
+            category="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
             class="me.oncereply.jscompressor.preferences.YUICompressorPreferencePage"
             id="me.oncereply.jscompressor.preferences.YUICompressor"
             name="YUI Compressor">

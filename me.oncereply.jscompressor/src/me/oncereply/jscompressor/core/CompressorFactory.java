@@ -15,14 +15,14 @@ public class CompressorFactory {
 			// 加载 yui的preferences配置
 			List<String> options = new ArrayList<String>();
 			options.add("--charset");
-			options.add(getStoreString(PreferenceConstants.P_YUI_CHARSET_CHOICE));
-			if (getStoreBealoon(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN)) {
+			options.add(getStoreString(PreferenceConstants.P_YUI_CHOICE_CHARSET));
+			if (getStoreBealoon(PreferenceConstants.P_YUI_BOOLEAN_NOMUNGE)) {
 				options.add("--nomunge");
 			}
-			if (getStoreBealoon(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN)) {
+			if (getStoreBealoon(PreferenceConstants.P_YUI_BOOLEAN_PRESERVE_SEMI)) {
 				options.add("--preserve-semi");
 			}
-			if (getStoreBealoon(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN)) {
+			if (getStoreBealoon(PreferenceConstants.P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS)) {
 				options.add("--disable-optimizations");
 			}
 			c.setOptions(options);

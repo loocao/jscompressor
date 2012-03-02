@@ -15,6 +15,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.swt.widgets.DirectoryDialog;
@@ -29,10 +30,19 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 	private Shell shell;
 	private String compressorType;
 	private ICompressor compressor;
+
 	/**
 	 * 导出文件夹
 	 */
 	private String outFolder;
+	/**
+	 * Javascript压缩开关
+	 */
+	private boolean switch_javascript;
+	/**
+	 * CSS压缩开关
+	 */
+	private boolean switch_css;
 
 	public FolderCompressorAction() {
 		super();
@@ -79,8 +89,8 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 			if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
 				IFile file = (IFile) resource;
 				if (compressor != null) {
-					if (file.getFileExtension().equals("js")
-							|| file.getFileExtension().equals("css")) {
+					if ((file.getFileExtension().equals("js") && !switch_javascript)
+							|| (file.getFileExtension().equals("css") && !switch_css)) {
 						String args[] = new String[] {
 								file.getLocation().toFile().getAbsolutePath(),
 								"-o", fullOutPath };
@@ -114,10 +124,14 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 	}
 
 	private void initPreferencesSetting() {
-		compressorType = Activator.getDefault().getPreferenceStore()
-				.getString(PreferenceConstants.P_COMPRESSOR_CHOICE);
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		compressorType = store
+				.getString(PreferenceConstants.P_CHOICE_COMPRESSOR);
 		// 实例压缩对象
 		compressor = CompressorFactory.newCompressor(compressorType);
+		switch_javascript = store
+				.getBoolean(PreferenceConstants.P_BOOLEAN_JAVASCRIPT_SWITCH);
+		switch_css = store.getBoolean(PreferenceConstants.P_BOOLEAN_CSS_SWITCH);
 	}
 
 }

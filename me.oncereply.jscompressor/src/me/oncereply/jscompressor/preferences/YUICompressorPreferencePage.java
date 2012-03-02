@@ -19,19 +19,22 @@ public class YUICompressorPreferencePage extends FieldEditorPreferencePage
 
 	@Override
 	protected void createFieldEditors() {
-		addField(new ComboFieldEditor(
-				PreferenceConstants.P_YUI_CHARSET_CHOICE, "Charset:",
-				new String[][] {
-						{"UTF-8","UTF-8"},
-						{"GBK","GBK"}
-				}, getFieldEditorParent()));
-		//--nomunge
-		addField(new BooleanFieldEditor(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN,
-				"&Minify only. Do not obfuscate local symbols.", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(PreferenceConstants.P_YUI_PRESERVE_SEMI_BOOLEAN,
-				"&Preserve unnecessary semicolons (such as right before a '}')", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(PreferenceConstants.P_YUI_DISABLE_OPTIMIZATIONS,
-				"&Disable all the built-in micro optimizations.", getFieldEditorParent()));
+		addField(new ComboFieldEditor(PreferenceConstants.P_YUI_CHOICE_CHARSET,
+				"Charset:", new String[][] { { "UTF-8", "UTF-8" },
+						{ "GBK", "GBK" } }, getFieldEditorParent()));
+		// --nomunge
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_YUI_BOOLEAN_NOMUNGE,
+				"&Minify only. Do not obfuscate local symbols.",
+				getFieldEditorParent()));
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_YUI_BOOLEAN_PRESERVE_SEMI,
+				"&Preserve unnecessary semicolons (such as right before a '}')",
+				getFieldEditorParent()));
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS,
+				"&Disable all the built-in micro optimizations.",
+				getFieldEditorParent()));
 	}
 
 	@Override
