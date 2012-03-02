@@ -17,7 +17,7 @@ import org.eclipse.ui.console.MessageConsoleStream;
 
 public class ConsoleUtils {
 
-	private final static String CONSOLE_NAME = "JavaScript Compressor";
+	private final static String CONSOLE_NAME = "Compressor";
 	private static MessageConsole myConsole;
 	private static MessageConsoleStream out;
 	static {

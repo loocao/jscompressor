@@ -28,13 +28,16 @@ import org.eclipse.ui.internal.PluginAction;
 public class FolderCompressorAction implements IObjectActionDelegate {
 
 	private Shell shell;
-	private String compressorType;
 	private ICompressor compressor;
 
 	/**
 	 * 导出文件夹
 	 */
 	private String outFolder;
+	/**
+	 * 压缩工具的选择:yuicompressor;closure-compiler
+	 */
+	private String compressorType;
 	/**
 	 * Javascript压缩开关
 	 */
@@ -53,6 +56,7 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 		DirectoryDialog d = new DirectoryDialog(shell);
 		outFolder = d.open();
 		if (outFolder != null) {
+			ConsoleUtils.info("Compress starting...");
 			// 加载preferences配置
 			initPreferencesSetting();
 
@@ -68,6 +72,7 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 					}
 				}
 			}
+			ConsoleUtils.info("Compress end.");
 		}
 	}
 
@@ -96,10 +101,10 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 								"-o", fullOutPath };
 						try {
 							compressor.compress(args);
-							ConsoleUtils.info("Compress successed: "
+							ConsoleUtils.info("successed: "
 									+ fullOutPath);
 						} catch (Exception e) {
-							ConsoleUtils.error("Compress failed: "
+							ConsoleUtils.error("failed: "
 									+ fullOutPath, e);
 						}
 					}
