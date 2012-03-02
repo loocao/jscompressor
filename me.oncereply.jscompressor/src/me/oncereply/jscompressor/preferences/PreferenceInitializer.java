@@ -22,6 +22,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				Activator.Compressor.YUICompressor);
 		store.setDefault(PreferenceConstants.P_BOOLEAN_JAVASCRIPT_SWITCH, false);
 		store.setDefault(PreferenceConstants.P_BOOLEAN_CSS_SWITCH, false);
+		store.setDefault(PreferenceConstants.P_BOOLEAN_MIN_SYMBOL, false);
 		// yui
 		store.setDefault(PreferenceConstants.P_YUI_CHOICE_CHARSET, "UTF-8");
 		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_NOMUNGE, false);

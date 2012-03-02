@@ -29,6 +29,7 @@ public class JavascriptCompressorAction implements IObjectActionDelegate {
 	private Shell shell;
 	private String compressorType;
 	private ICompressor compressor;
+	private boolean min_symbol;
 
 	/**
 	 * Constructor for Action1.
@@ -57,16 +58,21 @@ public class JavascriptCompressorAction implements IObjectActionDelegate {
 
 			Object element = ((TreeSelection) selection).getFirstElement();
 			if (element instanceof IResource) {
-				IResource resouce = (IResource) element;
+				IResource resource = (IResource) element;
 				FileDialog dialog = new FileDialog(shell);
-				dialog.setFileName(resouce.getName());
+				String name = resource.getName();
+				if (min_symbol) {
+					name = name.substring(0, name.lastIndexOf(".js"))
+							+ ".min.js";
+				}
+				dialog.setFileName(name);
 				dialog.setFilterExtensions(new String[] { "js" });
 				String path = dialog.open();
 				if (path != null) {
 					if (!path.endsWith(".js")) {
 						path += ".js";
 					}
-					handleResource(resouce, path);
+					handleResource(resource, path);
 				}
 			}
 			ConsoleUtils.info("Compress end.");
@@ -79,6 +85,7 @@ public class JavascriptCompressorAction implements IObjectActionDelegate {
 				.getString(PreferenceConstants.P_CHOICE_COMPRESSOR);
 		// 实例压缩对象
 		compressor = CompressorFactory.newCompressor(compressorType);
+		min_symbol = store.getBoolean(PreferenceConstants.P_BOOLEAN_MIN_SYMBOL);
 	}
 
 	private void handleResource(IResource resource, String fullOutPath) {

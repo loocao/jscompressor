@@ -46,6 +46,10 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 	 * CSS压缩开关
 	 */
 	private boolean switch_css;
+	/**
+	 * 是否在导出的文件名中显示min标记
+	 */
+	private boolean min_symbol;
 
 	public FolderCompressorAction() {
 		super();
@@ -89,23 +93,32 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 			}
 		} else if (resource instanceof IFile) {
 			// 输出文件路径
-			String fullOutPath = outFolder + path;
+			String fullOutPath = null;
+			// 是否在路径中显示min
+			if (!min_symbol) {
+				fullOutPath = outFolder + path;
+			} else {
+				String suffix = path.substring(path.lastIndexOf("."));
+				fullOutPath = outFolder
+						+ path.substring(0, path.lastIndexOf(suffix)) + ".min"
+						+ suffix;
+			}
+
 			File temp = new File(fullOutPath);
 			if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
 				IFile file = (IFile) resource;
 				if (compressor != null) {
 					if ((file.getFileExtension().equals("js") && !switch_javascript)
 							|| (file.getFileExtension().equals("css") && !switch_css)) {
+
 						String args[] = new String[] {
 								file.getLocation().toFile().getAbsolutePath(),
 								"-o", fullOutPath };
 						try {
 							compressor.compress(args);
-							ConsoleUtils.info("successed: "
-									+ fullOutPath);
+							ConsoleUtils.info("successed: " + fullOutPath);
 						} catch (Exception e) {
-							ConsoleUtils.error("failed: "
-									+ fullOutPath, e);
+							ConsoleUtils.error("failed: " + fullOutPath, e);
 						}
 					}
 				}
@@ -137,6 +150,7 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 		switch_javascript = store
 				.getBoolean(PreferenceConstants.P_BOOLEAN_JAVASCRIPT_SWITCH);
 		switch_css = store.getBoolean(PreferenceConstants.P_BOOLEAN_CSS_SWITCH);
+		min_symbol = store.getBoolean(PreferenceConstants.P_BOOLEAN_MIN_SYMBOL);
 	}
 
 }

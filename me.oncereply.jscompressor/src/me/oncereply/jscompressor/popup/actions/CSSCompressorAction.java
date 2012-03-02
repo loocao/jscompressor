@@ -27,6 +27,7 @@ public class CSSCompressorAction implements IObjectActionDelegate {
 	private Shell shell;
 	private String compressorType;
 	private ICompressor compressor;
+	private boolean min_symbol;
 
 	public CSSCompressorAction() {
 	}
@@ -44,7 +45,12 @@ public class CSSCompressorAction implements IObjectActionDelegate {
 			if (element instanceof IResource) {
 				IResource resource = (IResource) element;
 				FileDialog dialog = new FileDialog(shell);
-				dialog.setFileName(resource.getName());
+				String name = resource.getName();
+				if (min_symbol) {
+					name = name.substring(0, name.lastIndexOf(".css"))
+							+ ".min.css";
+				}
+				dialog.setFileName(name);
 				dialog.setFilterExtensions(new String[] { "css" });
 				String path = dialog.open();
 				if (path != null) {
@@ -64,6 +70,7 @@ public class CSSCompressorAction implements IObjectActionDelegate {
 				.getString(PreferenceConstants.P_CHOICE_COMPRESSOR);
 		// 实例压缩对象
 		compressor = CompressorFactory.newCompressor(compressorType);
+		min_symbol = store.getBoolean(PreferenceConstants.P_BOOLEAN_MIN_SYMBOL);
 	}
 
 	private void handleResource(IResource resource, String fullOutPath) {

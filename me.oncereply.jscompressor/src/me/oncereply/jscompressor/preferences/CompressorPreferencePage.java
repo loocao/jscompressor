@@ -16,8 +16,8 @@ import me.oncereply.jscompressor.Activator;
  * preferences can be accessed directly via the preference store.
  */
 
-public class CompressorPreferencePage extends
-		FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+public class CompressorPreferencePage extends FieldEditorPreferencePage
+		implements IWorkbenchPreferencePage {
 
 	public CompressorPreferencePage() {
 		super(GRID);
@@ -41,6 +41,11 @@ public class CompressorPreferencePage extends
 						{ "&Closure Compiler",
 								Activator.Compressor.ClosureCompiler } },
 				getFieldEditorParent()));
+
+		// 是否在压缩后的文件名中带min标记
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_BOOLEAN_MIN_SYMBOL,
+				"Export with \"min\" symbol.", getFieldEditorParent()));
 
 		// JavaScript压缩开关
 		addField(new BooleanFieldEditor(
