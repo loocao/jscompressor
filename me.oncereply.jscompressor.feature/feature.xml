@@ -418,7 +418,7 @@
    </license>
 
    <url>
-      <update label="jscompressor" url="http://oncereply.github.com/oncereply/jscompressor/update/"/>
+      <update label="jscompressor" url="http://oncereply.github.com/jscompressor/update/site.xml"/>
    </url>
 
    <plugin

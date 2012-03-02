@@ -33,13 +33,13 @@ public class JavascriptCompressorPreferencePage extends
 	public void createFieldEditors() {
 		//选择压缩器
 		addField(new RadioGroupFieldEditor(
-				PreferenceConstants.P_COMPRESSOR_CHOICE,
+				PreferenceConstants.P_COMPRESSOR_CHOICE ,
 				"Select which one to compress JavaScript:",
 				2,
 				new String[][] {
-						{ "&YUI Compressor", Activator.Compressor.YUICompressor },
-						{ "&Closure Compiler",
-								Activator.Compressor.ClosureCompiler } },
+					{ "&YUI Compressor", Activator.Compressor.YUICompressor },
+					{ "&Closure Compiler",Activator.Compressor.ClosureCompiler } 
+				},
 				getFieldEditorParent()));
 	}
 
