@@ -25,7 +25,7 @@ public class YUICompressorPreferencePage extends FieldEditorPreferencePage
 						{"UTF-8","UTF-8"},
 						{"GBK","GBK"}
 				}, getFieldEditorParent()));
-		
+		//--nomunge
 		addField(new BooleanFieldEditor(PreferenceConstants.P_YUI_NOMUNGE_BOOLEAN,
 				"&Minify only. Do not obfuscate local symbols.", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.P_YUI_PRESERVE_SEMI_BOOLEAN,

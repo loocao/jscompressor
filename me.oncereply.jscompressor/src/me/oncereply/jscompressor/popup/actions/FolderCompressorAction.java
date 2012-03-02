@@ -81,12 +81,13 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 				if (compressor != null) {
 					if (file.getFileExtension().equals("js")
 							|| file.getFileExtension().equals("css")) {
-						ConsoleUtils.info("Compress successed: " + fullOutPath);
 						String args[] = new String[] {
 								file.getLocation().toFile().getAbsolutePath(),
 								"-o", fullOutPath };
 						try {
 							compressor.compress(args);
+							ConsoleUtils.info("Compress successed: "
+									+ fullOutPath);
 						} catch (Exception e) {
 							ConsoleUtils.error("Compress failed: "
 									+ fullOutPath, e);
@@ -99,37 +100,6 @@ public class FolderCompressorAction implements IObjectActionDelegate {
 						+ " compress failed.");
 				return;
 			}
-			// IFile file = (IFile) resource;
-			// // 输出文件路径
-			// String fullOutPath = outFolder + path;
-			// File temp = new File(fullOutPath);
-			// if (temp.exists() || FileUtils.mkdirs(temp.getParentFile())) {
-			// // 如果是javascript文件
-			// if (file.getFileExtension().equals("js")
-			// || file.getFileExtension().equals("css")) {
-			// ConsoleUtils.info("Compress successed: " + fullOutPath);
-			// try {
-			// ClassLoader loader = Activator.getDefault().getClass()
-			// .getClassLoader();
-			// shell.getDisplay().getSyncThread();
-			// Thread.currentThread().setContextClassLoader(loader);
-			// Class c = loader.loadClass(YUICompressor.class
-			// .getName());
-			// Method main = c.getMethod("main",
-			// new Class[] { String[].class });
-			// String args[] = new String[] {
-			// file.getLocation().toFile().getAbsolutePath(),
-			// "-o", fullOutPath };
-			// main.invoke(null, new Object[] { args });
-			// } catch (Exception e) {
-			// ConsoleUtils
-			// .error("Compress failed: " + fullOutPath, e);
-			// }
-			// }
-			// } else {
-			// // 创建文件不成功
-			// LogUtils.error("File "+temp.getAbsolutePath()+" compress failed.");
-			// }
 		}
 	}
 

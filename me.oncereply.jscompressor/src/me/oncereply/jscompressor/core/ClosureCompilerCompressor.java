@@ -1,5 +1,7 @@
 package me.oncereply.jscompressor.core;
 
+import java.util.List;
+
 public class ClosureCompilerCompressor implements ICompressor {
 
 	@Override
@@ -9,9 +11,10 @@ public class ClosureCompilerCompressor implements ICompressor {
 	}
 
 	@Override
-	public void setPreferences(String[] preferences) {
-		// TODO 加载 Closure-Compile的preferences配置
+	public void setOptions(List<String> options) {
+		// TODO Auto-generated method stub
 		
 	}
+
 
 }

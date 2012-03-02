@@ -11,9 +11,9 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "me.oncereply.jscompressor"; //$NON-NLS-1$
 
-	public class Compressor {
-		public static final String YUICompressor="yuicompressor";
-		public static final String ClosureCompiler="closure-compiler";
+	public static class Compressor {
+		public static final String YUICompressor = "yuicompressor";
+		public static final String ClosureCompiler = "closure-compiler";
 	}
 
 	// The shared instance
