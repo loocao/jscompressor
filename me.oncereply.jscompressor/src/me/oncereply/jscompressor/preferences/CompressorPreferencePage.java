@@ -31,16 +31,9 @@ public class CompressorPreferencePage extends FieldEditorPreferencePage
 	 * editor knows how to save and restore itself.
 	 */
 	public void createFieldEditors() {
+
 		// 选择压缩器
-		addField(new RadioGroupFieldEditor(
-				PreferenceConstants.P_CHOICE_COMPRESSOR,
-				"Select which one to compress JavaScript:",
-				2,
-				new String[][] {
-						{ "&YUI Compressor", Activator.Compressor.YUICompressor },
-						{ "&Closure Compiler",
-								Activator.Compressor.ClosureCompiler } },
-				getFieldEditorParent()));
+		addField(new RadioGroupFieldEditor(PreferenceConstants.P_CHOICE_COMPRESSOR,"Select which one to compress JavaScript:",2,new String[][] {{ "&YUI Compressor", Activator.Compressor.YUICompressor },{ "&Closure Compiler",Activator.Compressor.ClosureCompiler } },getFieldEditorParent()));
 
 		// 是否在压缩后的文件名中带min标记
 		addField(new BooleanFieldEditor(
