@@ -1,6 +1,5 @@
 package me.oncereply.jscompressor.preferences;
 
-
 /**
  * Constant definitions for plug-in preferences
  */
@@ -17,14 +16,14 @@ public class PreferenceConstants {
 	 * CSS压缩开关,默认false,表示压缩
 	 */
 	public static final String P_BOOLEAN_CSS_SWITCH = "css_switch";
-	
+
 	/**
 	 * 是否在压缩后导出的文件名中添加min标识
 	 */
 	public static final String P_BOOLEAN_MIN_SYMBOL = "min_symbol";
 
 	/**
-	 * yui:charset
+	 * yui:--charset
 	 */
 	public static final String P_YUI_CHOICE_CHARSET = "yui_charset";
 
@@ -45,5 +44,9 @@ public class PreferenceConstants {
 	 */
 	public static final String P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS = "yui_disable_optimizations";
 
+	/**
+	 * Closure:--charset
+	 */
+	public static final String P_CLOSURE_CHOICE_CHARSET = "closure_charset";
 
 }

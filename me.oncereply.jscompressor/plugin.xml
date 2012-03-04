@@ -47,8 +47,14 @@
       <page
             category="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
             class="me.oncereply.jscompressor.preferences.YUICompressorPreferencePage"
-            id="me.oncereply.jscompressor.preferences.YUICompressor"
+            id="me.oncereply.jscompressor.preferences.YUICompressorPreferencePage"
             name="YUI Compressor">
+      </page>
+      <page
+            category="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
+            class="me.oncereply.jscompressor.preferences.ClosureCompilerPreferencePage"
+            id="me.oncereply.jscompressor.preferences.ClosureCompilerPreferencePage"
+            name="Closure Compiler">
       </page>
    </extension>
    <extension

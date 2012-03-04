@@ -20,17 +20,21 @@ public class YUICompressorPreferencePage extends FieldEditorPreferencePage
 	@Override
 	protected void createFieldEditors() {
 		addField(new ComboFieldEditor(PreferenceConstants.P_YUI_CHOICE_CHARSET,
-				"Charset:", new String[][] { { "UTF-8", "UTF-8" },
-						{ "GBK", "GBK" } }, getFieldEditorParent()));
+				"Charset:", new String[][] { { "GB2312", "GB2312" },
+						{ "GBK", "GBK" }, { "ISO-8859-1", "ISO-8859-1" },
+						{ "US-ASCII", "US-ASCII" }, { "UTF-16", "UTF-16" },
+						{ "UTF-8", "UTF-8" } }, getFieldEditorParent()));
 		// --nomunge
 		addField(new BooleanFieldEditor(
 				PreferenceConstants.P_YUI_BOOLEAN_NOMUNGE,
 				"&Minify only. Do not obfuscate local symbols.",
 				getFieldEditorParent()));
+		// --preserve-semi
 		addField(new BooleanFieldEditor(
 				PreferenceConstants.P_YUI_BOOLEAN_PRESERVE_SEMI,
 				"&Preserve unnecessary semicolons (such as right before a '}')",
 				getFieldEditorParent()));
+		// --disable-optimizations
 		addField(new BooleanFieldEditor(
 				PreferenceConstants.P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS,
 				"&Disable all the built-in micro optimizations.",
