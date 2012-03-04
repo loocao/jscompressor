@@ -22,7 +22,7 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 public abstract class AbstractCompressorAction implements IObjectActionDelegate {
-	
+
 	protected Shell shell;
 	/**
 	 * 压缩对象
@@ -90,12 +90,9 @@ public abstract class AbstractCompressorAction implements IObjectActionDelegate 
 				if (compressor != null) {
 					if ((file.getFileExtension().equals("js") && !switch_javascript)
 							|| (file.getFileExtension().equals("css") && !switch_css)) {
-
-						String args[] = new String[] {
-								file.getLocation().toFile().getAbsolutePath(),
-								"-o", fullOutPath };
 						try {
-							compressor.compress(args);
+							compressor.compress(file.getLocation().toFile()
+									.getAbsolutePath(), fullOutPath);
 							ConsoleUtils.info("successed: " + fullOutPath);
 						} catch (Exception e) {
 							ConsoleUtils.error("failed: " + fullOutPath, e);

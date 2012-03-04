@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ICompressor {
 
-	public void compress(String... args) throws Exception;
-
 	void setOptions(List<String> options);
+
+	void compress(String fileInput, String fileOutput) throws Exception;
 }

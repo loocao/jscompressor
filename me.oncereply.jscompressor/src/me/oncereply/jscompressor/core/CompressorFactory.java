@@ -28,8 +28,9 @@ public class CompressorFactory {
 			c.setOptions(options);
 		} else if (compressor.equals(Activator.Compressor.ClosureCompiler)) {
 			// 加载 Closure-Compile的preferences配置
-			// TODO 加载 Closure-Compile的preferences配置
-			c = new ClosureCompilerCompressor();
+			c = new ClosureCompressor();
+			List<String> options = new ArrayList<String>();
+			c.setOptions(options);
 		}
 		return c;
 	}
