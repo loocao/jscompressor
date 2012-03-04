@@ -14,7 +14,7 @@ public class YUICompressor implements ICompressor {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public void compress(String fileInput,String fileOutput) throws Exception {
+	public void compress(String fileInput, String fileOutput) throws Exception {
 		Shell shell = Activator.getDefault().getWorkbench().getDisplay()
 				.getActiveShell();
 		shell.getDisplay().getSyncThread();
@@ -29,12 +29,21 @@ public class YUICompressor implements ICompressor {
 		list.add("-o");
 		list.add(fileOutput);
 		list.addAll(options);
-		main.invoke(null, new Object[]{list.toArray(new String[]{})});
+		main.invoke(null, new Object[] { list.toArray(new String[] {}) });
 	}
 
 	@Override
 	public void setOptions(List<String> options) {
 		this.options = options;
+	}
+
+	@Override
+	public boolean isCompressable(String extension) {
+		if (("js".equalsIgnoreCase(extension) && !switch_javascript)
+				|| ("css".equalsIgnoreCase(extension) && !switch_css)) {
+			return true;
+		}
+		return false;
 	}
 
 }

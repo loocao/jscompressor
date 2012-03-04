@@ -91,9 +91,12 @@ public abstract class AbstractCompressorAction implements IObjectActionDelegate 
 					if ((file.getFileExtension().equals("js") && !switch_javascript)
 							|| (file.getFileExtension().equals("css") && !switch_css)) {
 						try {
-							compressor.compress(file.getLocation().toFile()
-									.getAbsolutePath(), fullOutPath);
-							ConsoleUtils.info("successed: " + fullOutPath);
+							if (compressor.isCompressable(file
+									.getFileExtension())) {
+								compressor.compress(file.getLocation().toFile()
+										.getAbsolutePath(), fullOutPath);
+								ConsoleUtils.info("successed: " + fullOutPath);
+							}
 						} catch (Exception e) {
 							ConsoleUtils.error("failed: " + fullOutPath, e);
 						}
