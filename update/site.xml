@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/me.oncereply.jscompressor.feature_1.0.0.201203051037.jar" id="me.oncereply.jscompressor.feature" version="1.0.0.201203051037">
+   <feature url="features/me.oncereply.jscompressor.feature_1.0.0.201203052151.jar" id="me.oncereply.jscompressor.feature" version="1.0.0.201203052151">
       <category name="me.oncereply.jscompressor"/>
    </feature>
    <category-def name="me.oncereply.jscompressor" label="jscompressor">
