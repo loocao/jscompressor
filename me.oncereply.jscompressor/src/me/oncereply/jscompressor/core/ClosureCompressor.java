@@ -5,6 +5,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.oncereply.jscompressor.Activator;
+
+import org.eclipse.swt.widgets.Shell;
+
 import com.google.javascript.jscomp.CommandLineRunner;
 
 public class ClosureCompressor implements ICompressor {
@@ -15,9 +19,16 @@ public class ClosureCompressor implements ICompressor {
 	@Override
 	public void compress(final String fileInput, final String fileOutput)
 			throws Exception {
-		Class c = Class
-				.forName("com.google.javascript.jscomp.CommandLineRunner");
+		Shell shell = Activator.getDefault().getWorkbench().getDisplay()
+				.getActiveShell();
+		shell.getDisplay().getSyncThread();
+		ClassLoader loader = Activator.getDefault().getClass().getClassLoader();
+		Thread.currentThread().setContextClassLoader(loader);
+		Class c = loader
+				.loadClass(com.google.javascript.jscomp.CommandLineRunner.class
+						.getName());
 		Class sc = c.getSuperclass();
+		// 参数
 		String[] cmds = {};
 		Constructor constructor = c.getDeclaredConstructor(new Class[] { cmds
 				.getClass() });
@@ -28,7 +39,7 @@ public class ClosureCompressor implements ICompressor {
 		cmdLine.add("--js_output_file");
 		cmdLine.add(fileOutput);
 		cmdLine.addAll(options);
-		cmds = cmdLine.toArray(cmds);
+		cmds = cmdLine.toArray(new String[] {});
 		CommandLineRunner cmd = (CommandLineRunner) constructor
 				.newInstance(new Object[] { cmds });
 		Method method = sc.getDeclaredMethod("doRun");

@@ -32,7 +32,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS, false);
 		
 		//closure
-		store.setDefault(PreferenceConstants.P_CLOSURE_CHOICE_CHARSET, "UTF-8");
+		store.setDefault(PreferenceConstants.P_CLOSURE_CHOICE_COMPILATION_LEVEL, "SIMPLE_OPTIMIZATIONS");
+		store.setDefault(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRETTY_PRINT, false);
+		store.setDefault(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRINT_INPUT_DELIMITER, false);
 	}
 
 }

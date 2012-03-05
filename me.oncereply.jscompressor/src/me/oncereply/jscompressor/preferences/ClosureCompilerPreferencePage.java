@@ -2,6 +2,7 @@ package me.oncereply.jscompressor.preferences;
 
 import me.oncereply.jscompressor.Activator;
 
+import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
@@ -18,14 +19,22 @@ public class ClosureCompilerPreferencePage extends FieldEditorPreferencePage
 
 	@Override
 	protected void createFieldEditors() {
+		// 压缩级别
 		addField(new ComboFieldEditor(
-				PreferenceConstants.P_CLOSURE_CHOICE_CHARSET, "Charset:",
-				new String[][] { { "GB2312", "GB2312" }, { "GBK", "GBK" },
-						{ "ISO-8859-1", "ISO-8859-1" },
-						{ "US-ASCII", "US-ASCII" }, { "UTF-16", "UTF-16" },
-						{ "UTF-8", "UTF-8" } }, getFieldEditorParent()));
-
-		// TODO Closure Compiler的preferences配置
+				PreferenceConstants.P_CLOSURE_CHOICE_COMPILATION_LEVEL,
+				"&Compilation level",
+				new String[][] { { "WHITESPACE_ONLY", "WHITESPACE_ONLY" },
+						{ "SIMPLE_OPTIMIZATIONS", "SIMPLE_OPTIMIZATIONS" },
+						{ "ADVANCED_OPTIMIZATIONS", "ADVANCED_OPTIMIZATIONS" } },
+				getFieldEditorParent()));
+		// 美化代码
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRETTY_PRINT,
+				"Pretty print", getFieldEditorParent()));
+		//Print input delimiter
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRINT_INPUT_DELIMITER,
+				"Print input delimiter", getFieldEditorParent()));
 	}
 
 	@Override
