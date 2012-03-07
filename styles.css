@@ -1,0 +1,151 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: '微软雅黑', Verdana, Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-size: 13px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a.externalLink,a.externalLink:link,a.externalLink:visited,a.externalLink:active,a.externalLink:hover
+	{
+	background: url(images/external-classic.png) right center no-repeat;
+	padding-right: 18px;
+}
+
+a:active,a:hover,#leftColumn a:active,#leftColumn a:hover {
+	color: #F30 !important;
+}
+
+h2 {
+	color: white;
+	border: none;
+	margin-right: 2px;
+	margin-top: 8px;
+	margin-bottom: 4px;
+	padding: 4px 4px 4px 6px;
+	background-color: #036;
+	font-weight: 900;
+	font-size: 13px;
+	background-repeat: no-repeat;
+}
+
+p {
+	margin-left: 4px;
+	margin-top: 8px;
+	margin-bottom: 4px;
+}
+
+div {
+	display: block;
+}
+
+#breadcrumbs {
+	font-size: x-small;
+	background-color: #CCC;
+	color: black;
+	border-top: 1px solid #AAA;
+	border-bottom: 1px solid #AAA;
+	padding: 3px 10px;
+}
+
+#breadcrumbs a:visited,#navcolumn a:visited,.contentBox a:visited,.tasknav a:visited
+	{
+	color: #47A;
+}
+
+#breadcrumbs a:link,#navcolumn a:link {
+	color: #36A;
+}
+
+#navcolumn li strong {
+	color: #369;
+}
+
+.xleft {
+	float: left;
+}
+
+.xright {
+	float: right;
+}
+
+.clear {
+	clear: both;
+	visibility: hidden;
+}
+
+div.clear hr {
+	display: none;
+}
+
+#navcolumn {
+	color: black;
+	border: none;
+	padding: 6px 4px 0 8px;
+	overflow: hidden;
+}
+
+#navcolumn h5 {
+	padding-top: 3px;
+	border-bottom: 1px solid #AAA;
+}
+
+#navcolumn ul {
+	font-size: small;
+}
+
+#navcolumn li {
+	padding-left: 8px;
+	list-style-type: none;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: 0 0.4em;
+	padding-left: 16px;
+	list-style-position: outside;
+	line-height: 1.2em;
+	font-size: smaller;
+}
+
+div #leftColumn {
+	color: black;
+	background-color: #EEE;
+	border-right: 1px solid #AAA;
+	border-bottom: 1px solid #AAA;
+	border-top: none;
+	border-left: none;
+	width: 150px;
+	overflow: auto;
+	float: left;
+}
+
+div #bodyColumn {
+	width: auto;
+	margin-right: 0;
+	margin-left: 158px;
+	padding-right: 0px;
+}
+
+.section {
+	padding: 4px;
+}
+
+#bodyColumn h2 {
+	margin-top: .3em;
+	margin-bottom: .5em;
+	padding-left: .5em;
+}
+
+.section p,.section p,.section dt,.section dt {
+	margin-right: 7px;
+	margin-left: 7px;
+}
