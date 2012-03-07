@@ -418,7 +418,8 @@
    </license>
 
    <url>
-      <update label="jscompressor" url="http://oncereply.github.com/jscompressor/update/site.xml"/>
+      <update label="jscompressor" url="http://oncereply.github.com/jscompressor/update/"/>
+      <discovery label="jscompressor" url="http://oncereply.github.com/jscompressor/update/site.xml"/>
    </url>
 
    <requires>
