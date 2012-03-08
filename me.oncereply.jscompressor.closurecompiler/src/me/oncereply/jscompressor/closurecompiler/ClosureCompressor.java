@@ -1,21 +1,26 @@
-package me.oncereply.jscompressor.core;
+package me.oncereply.jscompressor.closurecompiler;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.oncereply.jscompressor.Activator;
+import me.oncereply.jscompressor.closurecompiler.preferences.PreferenceConstants;
+import me.oncereply.jscompressor.core.ICompressor;
 
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.javascript.jscomp.CommandLineRunner;
 
 public class ClosureCompressor implements ICompressor {
-
 	private List<String> options = null;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public ClosureCompressor() {
+		init();
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void compress(final String fileInput, final String fileOutput)
 			throws Exception {
@@ -38,7 +43,9 @@ public class ClosureCompressor implements ICompressor {
 		cmdLine.add(fileInput);
 		cmdLine.add("--js_output_file");
 		cmdLine.add(fileOutput);
-		cmdLine.addAll(options);
+		if (options != null) {
+			cmdLine.addAll(options);
+		}
 		cmds = cmdLine.toArray(new String[] {});
 		CommandLineRunner cmd = (CommandLineRunner) constructor
 				.newInstance(new Object[] { cmds });
@@ -47,14 +54,29 @@ public class ClosureCompressor implements ICompressor {
 		method.invoke(cmd, new Object[] {});
 	}
 
-	@Override
-	public void setOptions(List<String> options) {
-		this.options = options;
+	private void init() {
+		IPreferenceStore localStore = Activator.getDefault()
+				.getPreferenceStore();
+
+		options = new ArrayList<String>();
+		options.add("--compilation_level");
+		options.add(localStore
+				.getString(PreferenceConstants.P_CLOSURE_CHOICE_COMPILATION_LEVEL));
+		if (localStore
+				.getBoolean(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRETTY_PRINT)) {
+			options.add("--formatting");
+			options.add("pretty_print");
+		}
+		if (localStore
+				.getBoolean(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRINT_INPUT_DELIMITER)) {
+			options.add("--formatting");
+			options.add("print_input_delimiter");
+		}
 	}
 
 	@Override
 	public boolean isCompressable(String extension) {
-		if ("js".equalsIgnoreCase(extension) && !switch_javascript) {
+		if ("js".equalsIgnoreCase(extension)) {
 			return true;
 		}
 		return false;

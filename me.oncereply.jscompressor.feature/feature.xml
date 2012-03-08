@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="me.oncereply.jscompressor.feature"
-      label="JavaScript Compressor Feature"
-      version="1.0.0.qualifier"
+      label="JavaScript Compressor"
+      version="2.0.0.qualifier"
       plugin="me.oncereply.jscompressor">
 
    <description url="http://oncereply.github.com/jscompressor">
@@ -418,7 +418,8 @@
    </license>
 
    <url>
-      <update label="jscompressor" url="http://oncereply.github.com/jscompressor/update/site.xml"/>
+      <update label="jscompressor" url="http://jscompressor.oncereply.me/update/"/>
+      <discovery label="jscompressor" url="http://oncereply.github.com/jscompressor/update/site.xml"/>
    </url>
 
    <requires>
@@ -432,7 +433,7 @@
          id="me.oncereply.jscompressor"
          download-size="0"
          install-size="0"
-         version="1.0.1.qualifier"
+         version="2.0.0.qualifier"
          unpack="false"/>
 
 </feature>

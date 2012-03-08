@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="me.oncereply.jscompressor.closurecompiler.feature"
+      label="Closure Compiler Support"
+      version="1.0.0.qualifier"
+      plugin="me.oncereply.jscompressor.closurecompiler">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="jscompressor" url="http://jscompressor.oncereply.me/update/"/>
+   </url>
+
+   <includes
+         id="me.oncereply.jscompressor.feature"
+         version="0.0.0"
+         name="JavaScript Compressor"
+         search-location="self"/>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="me.oncereply.jscompressor"/>
+   </requires>
+
+   <plugin
+         id="me.oncereply.jscompressor.closurecompiler"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+</feature>

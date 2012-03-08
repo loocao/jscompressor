@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Jscompressor
+Bundle-Name: JavaScript Compressor
 Bundle-SymbolicName: me.oncereply.jscompressor;singleton:=true
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: me.oncereply.jscompressor.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
- lib/yuicompressor-2.4.7.jar,
- lib/compiler.jar
+ lib/yuicompressor-2.4.7.jar
+Export-Package: me.oncereply.jscompressor.core

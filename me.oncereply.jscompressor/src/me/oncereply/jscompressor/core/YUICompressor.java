@@ -5,12 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.oncereply.jscompressor.Activator;
+import me.oncereply.jscompressor.preferences.PreferenceConstants;
 
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Shell;
 
 public class YUICompressor implements ICompressor {
 
 	private List<String> options = null;
+	
+	public YUICompressor(){
+		init();
+	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -32,15 +38,28 @@ public class YUICompressor implements ICompressor {
 		main.invoke(null, new Object[] { list.toArray(new String[] {}) });
 	}
 
-	@Override
-	public void setOptions(List<String> options) {
-		this.options = options;
+	private void init() {
+		IPreferenceStore store = Activator.getDefault()
+				.getPreferenceStore();
+		options = new ArrayList<String>();
+		options.add("--charset");
+		options.add(store.getString(PreferenceConstants.P_YUI_CHOICE_CHARSET));
+		if (store.getBoolean(PreferenceConstants.P_YUI_BOOLEAN_NOMUNGE)) {
+			options.add("--nomunge");
+		}
+		if (store.getBoolean(PreferenceConstants.P_YUI_BOOLEAN_PRESERVE_SEMI)) {
+			options.add("--preserve-semi");
+		}
+		if (store
+				.getBoolean(PreferenceConstants.P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS)) {
+			options.add("--disable-optimizations");
+		}
 	}
 
 	@Override
 	public boolean isCompressable(String extension) {
-		if (("js".equalsIgnoreCase(extension) && !switch_javascript)
-				|| ("css".equalsIgnoreCase(extension) && !switch_css)) {
+		if ("js".equalsIgnoreCase(extension)
+				|| "css".equalsIgnoreCase(extension)) {
 			return true;
 		}
 		return false;
