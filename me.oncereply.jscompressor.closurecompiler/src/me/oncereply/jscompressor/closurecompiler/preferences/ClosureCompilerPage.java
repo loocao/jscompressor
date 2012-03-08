@@ -22,7 +22,7 @@ public class ClosureCompilerPage extends FieldEditorPreferencePage implements
 	public ClosureCompilerPage() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription("A demonstration of a preference page implementation");
+		setDescription("Closure Compiler Settings");
 	}
 
 	/**
@@ -32,13 +32,9 @@ public class ClosureCompilerPage extends FieldEditorPreferencePage implements
 	 */
 	public void createFieldEditors() {
 		// 压缩级别
-		addField(new ComboFieldEditor(
-				PreferenceConstants.P_CLOSURE_CHOICE_COMPILATION_LEVEL,
-				"&Compilation level",
-				new String[][] { { "WHITESPACE_ONLY", "WHITESPACE_ONLY" },
-						{ "SIMPLE_OPTIMIZATIONS", "SIMPLE_OPTIMIZATIONS" },
-						{ "ADVANCED_OPTIMIZATIONS", "ADVANCED_OPTIMIZATIONS" } },
-				getFieldEditorParent()));
+		addField(new RadioGroupFieldEditor(PreferenceConstants.P_CLOSURE_CHOICE_COMPILATION_LEVEL,"Compilation level:", 1, new String[][] { { "&Whitespace", "WHITESPACE_ONLY" },
+				{ "&Simple", "SIMPLE_OPTIMIZATIONS" },
+				{ "&Advanced", "ADVANCED_OPTIMIZATIONS" } },getFieldEditorParent()));
 		// 美化代码
 		addField(new BooleanFieldEditor(
 				PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRETTY_PRINT,

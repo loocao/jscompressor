@@ -7,8 +7,8 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.BooleanFieldEditor;
+import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
-import org.eclipse.jface.preference.RadioGroupFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -29,7 +29,7 @@ public class CompressorPreferencePage extends FieldEditorPreferencePage
 	public CompressorPreferencePage() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		// setDescription("Compressor Settings");
+		 setDescription("JavaScript Compressor Settings");
 	}
 
 	/**
@@ -47,13 +47,13 @@ public class CompressorPreferencePage extends FieldEditorPreferencePage
 		String[][] compressors = new String[configElements.length][2];
 		for (int i = 0; i < configElements.length; i++) {
 			IConfigurationElement ce = configElements[i];
-			compressors[i][0] = "&" + ce.getAttribute("name");
+			compressors[i][0] = ce.getAttribute("name");
 			compressors[i][1] = ce.getAttribute("id");
 		}
 
 		// 选择压缩器
-		addField(new RadioGroupFieldEditor(PreferenceConstants.P_CHOICE_COMPRESSOR,"Select which one to compress JavaScript:", 2, compressors,getFieldEditorParent()));
-
+		addField(new ComboFieldEditor(PreferenceConstants.P_CHOICE_COMPRESSOR, "&Compressor:", compressors, getFieldEditorParent()));
+		
 		// 是否在压缩后的文件名中带min标记
 		addField(new BooleanFieldEditor(
 				PreferenceConstants.P_BOOLEAN_MIN_SYMBOL,
