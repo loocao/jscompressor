@@ -2,7 +2,7 @@
 <feature
       id="me.oncereply.jscompressor.closurecompiler.feature"
       label="Closure Compiler Support"
-      version="1.0.0.qualifier"
+      version="1.0.1.qualifier"
       plugin="me.oncereply.jscompressor.closurecompiler">
 
    <description url="http://www.example.com/description">
@@ -37,7 +37,7 @@
          id="me.oncereply.jscompressor.closurecompiler"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"
+         version="1.0.1.qualifier"
          unpack="false"/>
 
 </feature>
