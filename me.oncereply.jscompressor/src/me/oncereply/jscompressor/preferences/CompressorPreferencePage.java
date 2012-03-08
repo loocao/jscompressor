@@ -1,9 +1,16 @@
 package me.oncereply.jscompressor.preferences;
 
-import org.eclipse.jface.preference.*;
-import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.eclipse.ui.IWorkbench;
 import me.oncereply.jscompressor.Activator;
+
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.preference.BooleanFieldEditor;
+import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.RadioGroupFieldEditor;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
  * This class represents a preference page that is contributed to the
@@ -32,8 +39,20 @@ public class CompressorPreferencePage extends FieldEditorPreferencePage
 	 */
 	public void createFieldEditors() {
 
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IExtensionPoint extension = registry
+				.getExtensionPoint("me.oncereply.jscompressor.compressors");
+		IConfigurationElement[] configElements = extension
+				.getConfigurationElements();
+		String[][] compressors = new String[configElements.length][2];
+		for (int i = 0; i < configElements.length; i++) {
+			IConfigurationElement ce = configElements[i];
+			compressors[i][0] = "&" + ce.getAttribute("name");
+			compressors[i][1] = ce.getAttribute("id");
+		}
+
 		// 选择压缩器
-		addField(new RadioGroupFieldEditor(PreferenceConstants.P_CHOICE_COMPRESSOR,"Select which one to compress JavaScript:",2,new String[][] {{ "&YUI Compressor", Activator.Compressor.YUICompressor },{ "&Closure Compiler",Activator.Compressor.ClosureCompiler } },getFieldEditorParent()));
+		addField(new RadioGroupFieldEditor(PreferenceConstants.P_CHOICE_COMPRESSOR,"Select which one to compress JavaScript:", 2, compressors,getFieldEditorParent()));
 
 		// 是否在压缩后的文件名中带min标记
 		addField(new BooleanFieldEditor(

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="me.oncereply.jscompressor.compressors" name="Compressor" schema="schema/me.oncereply.jscompressor.compressors.exsd"/>
+   <extension-point id="me.oncereply.jscompressor.compressors" name="Compressors" schema="schema/me.oncereply.jscompressor.compressors.exsd"/>
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
@@ -51,18 +51,20 @@
             id="me.oncereply.jscompressor.preferences.YUICompressorPreferencePage"
             name="YUI Compressor">
       </page>
-      <page
-            category="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
-            class="me.oncereply.jscompressor.preferences.ClosureCompilerPreferencePage"
-            id="me.oncereply.jscompressor.preferences.ClosureCompilerPreferencePage"
-            name="Closure Compiler">
-      </page>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
             class="me.oncereply.jscompressor.preferences.PreferenceInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="me.oncereply.jscompressor.compressors">
+      <compressor
+            class="me.oncereply.jscompressor.core.YUICompressor"
+            id="me.oncereply.jscompressor.core.YUICompressor"
+            name="YUI Compressor">
+      </compressor>
    </extension>
 
 </plugin>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="me.oncereply.jscompressor.compressors">
+      <compressor
+            class="me.oncereply.jscompressor.closurecompiler.ClosureCompressor"
+            id="me.oncereply.jscompressor.closurecompiler.ClosureCompressor"
+            name="Closure Compiler">
+      </compressor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
+            class="me.oncereply.jscompressor.closurecompiler.preferences.ClosureCompilerPage"
+            id="me.oncereply.jscompressor.closurecompiler.preferences.ClosureCompilerPage"
+            name="Closure Compiler">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="me.oncereply.jscompressor.closurecompiler.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

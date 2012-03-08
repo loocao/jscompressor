@@ -3,7 +3,7 @@
 <schema targetNamespace="me.oncereply.jscompressor" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="me.oncereply.jscompressor" id="me.oncereply.jscompressor.compressors" name="Compressor"/>
+         <meta.schema plugin="me.oncereply.jscompressor" id="compressors" name="Compressors"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -17,6 +17,9 @@
          </appinfo>
       </annotation>
       <complexType>
+         <sequence>
+            <element ref="compressor"/>
+         </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
                <documentation>
@@ -39,6 +42,35 @@
                <appinfo>
                   <meta.attribute translatable="true"/>
                </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="compressor">
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":me.oncereply.jscompressor.core.ICompressor"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
             </annotation>
          </attribute>
       </complexType>

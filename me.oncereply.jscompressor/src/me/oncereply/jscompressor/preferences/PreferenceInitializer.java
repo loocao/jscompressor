@@ -18,9 +18,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		
+		// 默认使用YUI Compressor
 		store.setDefault(PreferenceConstants.P_CHOICE_COMPRESSOR,
-				Activator.Compressor.YUICompressor);
+				"me.oncereply.jscompressor.core.YUICompressor");
 		store.setDefault(PreferenceConstants.P_BOOLEAN_JAVASCRIPT_SWITCH, false);
 		store.setDefault(PreferenceConstants.P_BOOLEAN_CSS_SWITCH, false);
 		store.setDefault(PreferenceConstants.P_BOOLEAN_MIN_SYMBOL, false);
@@ -30,11 +30,6 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_NOMUNGE, false);
 		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_PRESERVE_SEMI, false);
 		store.setDefault(PreferenceConstants.P_YUI_BOOLEAN_DISABLE_OPTIMIZATIONS, false);
-		
-		//closure
-		store.setDefault(PreferenceConstants.P_CLOSURE_CHOICE_COMPILATION_LEVEL, "SIMPLE_OPTIMIZATIONS");
-		store.setDefault(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRETTY_PRINT, false);
-		store.setDefault(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRINT_INPUT_DELIMITER, false);
 	}
 
 }
