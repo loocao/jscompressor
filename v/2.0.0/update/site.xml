@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/me.oncereply.jscompressor.feature_2.0.0.201203082140.jar" id="me.oncereply.jscompressor.feature" version="2.0.0.201203082140">
+      <category name="JavaScript Compressor"/>
+   </feature>
+   <feature url="features/me.oncereply.jscompressor.closurecompiler.feature_1.0.0.201203082140.jar" id="me.oncereply.jscompressor.closurecompiler.feature" version="1.0.0.201203082140">
+      <category name="JavaScript Compressor"/>
+   </feature>
+   <category-def name="JavaScript Compressor" label="JavaScript Compressor"/>
+</site>
