@@ -49,6 +49,46 @@ div {
 	display: block;
 }
 
+#banner {
+	margin: 0px 0px 10px 0px;
+	width: 480px;
+}
+
+#banner,.logo,.title {
+	height: 72px;
+}
+
+.logo {
+	width: 136px;
+	float: left;
+}
+
+.logo a:active,.logo a:hover,.logo a:visited {
+	color: #FFF !important;
+}
+
+
+.logo img {
+	width: 100%;
+	height: 100%;
+}
+
+.title {
+	float: left;
+	vertical-align: text-top;
+	padding-left: 5px;
+}
+
+.title .m {
+	color: #666;
+	font-size: 300%;
+}
+
+.title .sub {
+	color: #444;
+	font-size: 82%;
+}
+
 #breadcrumbs {
 	font-size: x-small;
 	background-color: #CCC;
@@ -56,6 +96,7 @@ div {
 	border-top: 1px solid #AAA;
 	border-bottom: 1px solid #AAA;
 	padding: 3px 10px;
+	min-width: 480px;
 }
 
 #breadcrumbs a:visited,#navcolumn a:visited,.contentBox a:visited,.tasknav a:visited
@@ -148,4 +189,11 @@ div #bodyColumn {
 .section p,.section p,.section dt,.section dt {
 	margin-right: 7px;
 	margin-left: 7px;
+}
+#center{
+	min-height:500px;
+}
+#footer{
+	width: 100%;
+	text-align: center;
 }
