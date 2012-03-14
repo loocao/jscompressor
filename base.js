@@ -1,7 +1,7 @@
 var config = {
-	version : '2.0.1',
-	published : '2012-03-09',
-	copyright : '© 2012 - oncereply'
+	version : '2.0.2',
+	published : '2012-03-14',
+	copyright : '© 2012 - <a href="http://www.oncereply.me/">oncereply</a>'
 };
 (function(window) {
 	var jc = window.jc = config;
@@ -9,7 +9,7 @@ var config = {
 		var publised_date = 'Last Updated: ' + jc.published + ' | Version: '
 				+ jc.version;
 		$('#publishDate').text(publised_date);
-		$('#footer').text(jc.copyright);
+		$('#footer').html(jc.copyright);
 	};
 })(window);
 
