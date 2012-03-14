@@ -3,11 +3,12 @@
    <description name="jscompressor" url="http://jscompressor.oncereply.me/update/">
       jscompressor update site
    </description>
-   <feature url="features/me.oncereply.jscompressor.feature_2.0.2.201203142300.jar" id="me.oncereply.jscompressor.feature" version="2.0.2.201203142300">
+   <feature url="features/me.oncereply.jscompressor.feature_2.0.2.201203142340.jar" id="me.oncereply.jscompressor.feature" version="2.0.2.201203142340">
       <category name="JavaScript Compressor"/>
    </feature>
-   <feature url="features/me.oncereply.jscompressor.closurecompiler.feature_1.0.2.201203142300.jar" id="me.oncereply.jscompressor.closurecompiler.feature" version="1.0.2.201203142300">
-      <category name="JavaScript Compressor"/>
+   <feature url="features/me.oncereply.jscompressor.closurecompiler.feature_1.0.2.201203142340.jar" id="me.oncereply.jscompressor.closurecompiler.feature" version="1.0.2.201203142340">
+      <category name="JavaScript Compressor Support"/>
    </feature>
    <category-def name="JavaScript Compressor" label="JavaScript Compressor"/>
+   <category-def name="JavaScript Compressor Support" label="JavaScript Compressor Support"/>
 </site>
