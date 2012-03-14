@@ -1,6 +1,6 @@
 var config = {
 	version : '2.0.2',
-	published : '2012-03-14',
+	published : '2012-03-15',
 	copyright : '© 2012 - <a href="http://www.oncereply.me/">oncereply</a>'
 };
 (function(window) {
