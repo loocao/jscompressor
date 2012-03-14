@@ -3,22 +3,25 @@
       id="me.oncereply.jscompressor.closurecompiler.feature"
       label="Closure Compiler Support"
       version="1.0.1.qualifier"
-      plugin="me.oncereply.jscompressor.closurecompiler">
+      plugin="me.oncereply.jscompressor.closurecompiler"
+      license-feature="me.oncereply.jscompressor.feature"
+      license-feature-version="2.0.1.qualifier">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://jscompressor.oncereply.me/">
+      Compress Javascript and CSS files
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright url="http://www.oncereply.me/">
+      Copyright@oncereply
    </copyright>
 
-   <license url="http://www.example.com/license">
+   <license url="http://www.apache.org/licenses/LICENSE-2.0">
       [Enter License Description here.]
    </license>
 
    <url>
       <update label="jscompressor" url="http://jscompressor.oncereply.me/update/"/>
+      <discovery label="jscompressor" url="http://jscompressor.oncereply.me/update/"/>
    </url>
 
    <includes
