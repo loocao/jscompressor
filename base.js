@@ -42,7 +42,7 @@ var config = {
     var jc = window.jc = config;
     jc.initMenus = function() {
         // navcolumn
-        var leftColumn = $('#leftColumn #navcolumn');
+        var leftColumn = $('#leftColumn #navcolumn').empty();
         $(config.menus.leftColumn).each(function(i) {
             var sub = this;
             var title = sub.title;
@@ -77,7 +77,7 @@ var config = {
                 .append(
                         '<a href="https://github.com/oncereply/jscompressor/tarball/master"><img border="0" width="90" src="images/tar.png"></a>');
         // xright
-        var xright = $('#breadcrumbs .xright:eq(0)');
+        var xright = $('#breadcrumbs .xright:eq(0)').empty();
         $(config.menus.xright).each(function(i) {
             var sub = this;
             var a = $('<a></a>').addClass(function() {
