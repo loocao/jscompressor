@@ -19,7 +19,6 @@ import java.util.List;
 import me.oncereply.jscompressor.Activator;
 import me.oncereply.jscompressor.CompressorException;
 import me.oncereply.jscompressor.preferences.PreferenceConstants;
-import me.oncereply.jscompressor.util.LogUtils;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Shell;

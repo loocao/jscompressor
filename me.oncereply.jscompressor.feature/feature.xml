@@ -2,7 +2,7 @@
 <feature
       id="me.oncereply.jscompressor.feature"
       label="JavaScript Compressor"
-      version="2.0.2.qualifier"
+      version="2.0.3"
       plugin="me.oncereply.jscompressor">
 
    <description url="http://jscompressor.oncereply.me/">
@@ -233,6 +233,7 @@ http://www.apache.org/licenses/
          id="me.oncereply.jscompressor"
          download-size="0"
          install-size="0"
-         version="2.0.2.qualifier"/>
+         version="2.0.3"
+         unpack="false"/>
 
 </feature>
