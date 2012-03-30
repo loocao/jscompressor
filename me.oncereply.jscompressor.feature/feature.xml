@@ -233,7 +233,6 @@ http://www.apache.org/licenses/
          id="me.oncereply.jscompressor"
          download-size="0"
          install-size="0"
-         version="2.0.2.qualifier"
-         unpack="false"/>
+         version="2.0.2.qualifier"/>
 
 </feature>
