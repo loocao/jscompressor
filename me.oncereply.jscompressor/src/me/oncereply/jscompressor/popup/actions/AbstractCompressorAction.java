@@ -79,9 +79,12 @@ public abstract class AbstractCompressorAction implements IObjectActionDelegate 
 			if (!min_symbol) {
 				fullOutPath = path;
 			} else {
+				/* @wjw_comment
 				String suffix = path.substring(path.lastIndexOf("."));
 				fullOutPath = path.substring(0, path.lastIndexOf(suffix))
 						+ ".min" + suffix;
+				*/
+				fullOutPath = path;  //@wjw_add
 			}
 
 			File temp = new File(fullOutPath);

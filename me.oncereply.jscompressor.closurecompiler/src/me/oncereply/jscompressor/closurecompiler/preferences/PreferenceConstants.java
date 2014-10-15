@@ -20,5 +20,9 @@ public class PreferenceConstants {
 	 */
 	public static final String P_CLOSURE_BOOLEAN_FORMATTING_PRINT_INPUT_DELIMITER = "formatting_print_input_delimiter";
 
+	/**@wjw_add
+	 * closure:--create_source_map
+	 */
+	public static final String P_CREATE_SOURCE_MAP = "create_source_map";
 
 }

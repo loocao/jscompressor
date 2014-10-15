@@ -43,6 +43,10 @@ public class ClosureCompilerPage extends FieldEditorPreferencePage implements
 		addField(new BooleanFieldEditor(
 				PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRINT_INPUT_DELIMITER,
 				"Print input delimiter", getFieldEditorParent()));
+		//@wjw_add create_source_map
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_CREATE_SOURCE_MAP,
+				"Create Source Map", getFieldEditorParent()));
 	}
 
 	/*
