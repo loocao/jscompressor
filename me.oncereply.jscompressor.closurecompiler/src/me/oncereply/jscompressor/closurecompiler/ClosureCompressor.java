@@ -43,6 +43,17 @@ public class ClosureCompressor implements ICompressor {
 		cmdLine.add(fileInput);
 		cmdLine.add("--js_output_file");
 		cmdLine.add(fileOutput);
+
+		//->@wjw_add
+		IPreferenceStore localStore = Activator.getDefault().getPreferenceStore();
+		if (localStore.getBoolean(PreferenceConstants.P_CREATE_SOURCE_MAP)) {
+			cmdLine.add("--source_map_format");
+			cmdLine.add("V3");  //source map的版本,目前一律采用V3
+			cmdLine.add("--create_source_map");
+			cmdLine.add(fileOutput+".map");
+		}
+        //<-@wjw_add		
+	
 		if (options != null) {
 			cmdLine.addAll(options);
 		}

@@ -40,10 +40,9 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            category="org.eclipse.wst.jsdt.ui.preferences.JavaBasePreferencePage"
             class="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
             id="me.oncereply.jscompressor.preferences.CompressorPreferencePage"
-            name="Compressor">
+            name="JsCompressor">
       </page>
       <page
             category="me.oncereply.jscompressor.preferences.CompressorPreferencePage"

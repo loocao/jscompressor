@@ -1,6 +1,7 @@
 package me.oncereply.jscompressor.preferences;
 
 import me.oncereply.jscompressor.Activator;
+import me.oncereply.jscompressor.util.ConsoleUtils;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionPoint;
@@ -38,18 +39,25 @@ public class CompressorPreferencePage extends FieldEditorPreferencePage
 	 * editor knows how to save and restore itself.
 	 */
 	public void createFieldEditors() {
-
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IExtensionPoint extension = registry
 				.getExtensionPoint("me.oncereply.jscompressor.compressors");
 		IConfigurationElement[] configElements = extension
 				.getConfigurationElements();
-		String[][] compressors = new String[configElements.length][2];
+		String[][] compressors = {{"",""},{"",""}};
 		for (int i = 0; i < configElements.length; i++) {
 			IConfigurationElement ce = configElements[i];
 			compressors[i][0] = ce.getAttribute("name");
 			compressors[i][1] = ce.getAttribute("id");
 		}
+
+		/* @wjw_add
+	    String[][] compressors = {{"",""},{"",""}};
+		compressors[0][0] = "YUI Compressor";
+		compressors[0][1] = "me.oncereply.jscompressor.core.YUICompressor";
+		compressors[1][0] = "Google Closure Compiler";
+		compressors[1][1] = "me.oncereply.jscompressor.closurecompiler.preferences.ClosureCompilerPage";
+		*/
 
 		// 选择压缩器
 		addField(new ComboFieldEditor(PreferenceConstants.P_CHOICE_COMPRESSOR, "&Compressor:", compressors, getFieldEditorParent()));

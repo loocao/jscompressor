@@ -21,6 +21,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.P_CLOSURE_CHOICE_COMPILATION_LEVEL, "SIMPLE_OPTIMIZATIONS");
 		store.setDefault(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRETTY_PRINT, false);
 		store.setDefault(PreferenceConstants.P_CLOSURE_BOOLEAN_FORMATTING_PRINT_INPUT_DELIMITER, false);
+		//@wjw_add
+		store.setDefault(PreferenceConstants.P_CREATE_SOURCE_MAP, false);
 	}
 
 }
