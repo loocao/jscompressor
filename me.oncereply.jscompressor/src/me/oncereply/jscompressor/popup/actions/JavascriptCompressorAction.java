@@ -1,5 +1,7 @@
 package me.oncereply.jscompressor.popup.actions;
 
+import java.io.IOException;
+
 import me.oncereply.jscompressor.util.ConsoleUtils;
 
 import org.eclipse.core.resources.IResource;
@@ -36,6 +38,14 @@ public class JavascriptCompressorAction extends AbstractCompressorAction {
 				FileDialog dialog = new FileDialog(shell);
 				String name = resource.getName();
 				if (min_symbol) {
+					//->@wjw_add  当添加min后缀时,设置缺省路径为要压缩的js文件所在的目录
+					try {
+						dialog.setFilterPath(resource.getLocation().toFile().getParentFile().getCanonicalPath());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					//<-@wjw_add
+					
 					name = name.substring(0, name.lastIndexOf(".js"))
 							+ ".min.js";
 				}
