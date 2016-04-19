@@ -2,7 +2,7 @@
 <feature
       id="me.oncereply.jscompressor.closurecompiler.feature"
       label="Closure Compiler Support"
-      version="1.0.3"
+      version="1.0.4"
       plugin="me.oncereply.jscompressor.closurecompiler"
       license-feature="me.oncereply.jscompressor.feature"
       license-feature-version="0.0.0">

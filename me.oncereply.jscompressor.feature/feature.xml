@@ -2,7 +2,7 @@
 <feature
       id="me.oncereply.jscompressor.feature"
       label="JavaScript Compressor"
-      version="2.0.3"
+      version="2.0.4"
       plugin="me.oncereply.jscompressor">
 
    <description url="http://jscompressor.oncereply.me/">
