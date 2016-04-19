@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description name="jscompressor" url="http://jscompressor.oncereply.me/update/">
-      jscompressor update site
-   </description>
-   <feature url="features/me.oncereply.jscompressor.feature_2.0.2.201203150013.jar" id="me.oncereply.jscompressor.feature" version="2.0.2.201203150013">
-      <category name="JavaScript Compressor"/>
-   </feature>
-   <feature url="features/me.oncereply.jscompressor.closurecompiler.feature_1.0.2.201203150013.jar" id="me.oncereply.jscompressor.closurecompiler.feature" version="1.0.2.201203150013">
-      <category name="JavaScript Compressor Supports"/>
-   </feature>
-   <feature url="features/me.oncereply.jscompressor.feature_2.0.3.jar" id="me.oncereply.jscompressor.feature" version="2.0.3">
-      <category name="JavaScript Compressor"/>
-   </feature>
-   <feature url="features/me.oncereply.jscompressor.closurecompiler.feature_1.0.3.jar" id="me.oncereply.jscompressor.closurecompiler.feature" version="1.0.3">
-      <category name="JavaScript Compressor Supports"/>
-   </feature>
-   <category-def name="JavaScript Compressor" label="JavaScript Compressor"/>
-   <category-def name="JavaScript Compressor Supports" label="JavaScript Compressor Supports"/>
+   <feature url="features/me.oncereply.jscompressor.closurecompiler.feature_1.0.4.jar" id="me.oncereply.jscompressor.closurecompiler.feature" version="1.0.4"/>
+   <feature url="features/me.oncereply.jscompressor.feature_2.0.4.jar" id="me.oncereply.jscompressor.feature" version="2.0.4"/>
 </site>
