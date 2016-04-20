@@ -1,6 +1,6 @@
 var config = {
-    version : '2.0.4',
-    published : '2016-04-19',
+    version : '2.0.5',
+    published : '2016-04-20',
     copyright : '© 2012 - <a href="http://www.oncereply.me/">oncereply</a>',
     menus : {
         leftColumn : [ {
