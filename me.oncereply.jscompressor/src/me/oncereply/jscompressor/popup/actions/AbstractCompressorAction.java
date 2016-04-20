@@ -68,7 +68,13 @@ public abstract class AbstractCompressorAction implements IObjectActionDelegate 
 			try {
 				IResource[] resources = folder.members();
 				for (IResource r : resources) {
-					handleResource(r, path + File.separator + r.getName());
+					String name = r.getName();
+					// 文件夹输出判断是否在路径中显示min
+					if(min_symbol){
+						name = name.substring(0, name.lastIndexOf(".js"))
+								+ ".min.js";
+					}
+					handleResource(r, path + File.separator + name);
 				}
 			} catch (CoreException e) {
 			}
